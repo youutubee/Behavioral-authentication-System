@@ -20,9 +20,9 @@ def on_press(key):
 
 
 def on_release(key):
-    start=on_press()
-    end=time.time();
-    print('{0} released'.format(key),"time",end-start)
+    start=start_time()
+    end=end_time()
+    print('{0} released'.format(key),"time",(end-start)*1000)
 
     if key == keyboard.Key.esc:
         # Stop listener
