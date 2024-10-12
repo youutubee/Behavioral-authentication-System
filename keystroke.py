@@ -1,16 +1,29 @@
 from pynput import keyboard
+import time
 
+
+def start_time():
+    start=time.time()
+    return start
+
+def end_time():
+    end=time.time()
+    return end
 def on_press(key):
     try:
-        print('alphanumeric key {0} pressed'.format(
-            key.char))
+        start = time.time()
+        print('alphanumeric key {0} pressed'.format(key.char))
     except AttributeError:
-        print('special key {0} pressed'.format(
-            key))
+        start=time.time();
+        print('special key {0} pressed'.format(key))
+
+
 
 def on_release(key):
-    print('{0} released'.format(
-        key))
+    start=on_press()
+    end=time.time();
+    print('{0} released'.format(key),"time",end-start)
+
     if key == keyboard.Key.esc:
         # Stop listener
         return False
@@ -18,14 +31,15 @@ def on_release(key):
 # Collect events until released
 with keyboard.Listener(
         on_press=on_press,
-        on_release=on_release) as listener:
-    listener.join()
+        on_release=on_release) as listener:listener.join()
 
 # ...or, in a non-blocking fashion:
 listener = keyboard.Listener(
     on_press=on_press,
     on_release=on_release)
 listener.start()
+
+
 
 
 
