@@ -1,11 +1,9 @@
 from pynput import keyboard
 import time
 
-
 def start_time():
     start=time.time()
     return start
-
 def end_time():
     end=time.time()
     return end
@@ -16,8 +14,6 @@ def on_press(key):
     except AttributeError:
         start=time.time();
         print('special key {0} pressed'.format(key))
-
-
 
 def on_release(key):
     start=start_time()
