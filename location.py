@@ -12,11 +12,14 @@ geopy.geocoders.options.default_ssl_context = ctx
 loc = Nominatim(user_agent="Behavioral biometric auth")
 
 # entering the location name
-getLoc = loc.geocode("bennett university")
+getLoc = loc.geocode()
 
 # printing address
 print(getLoc.address)
 
-# printing latitude and longitude
-print("Latitude = ", getLoc.latitude,)
-print("Longitude = ", getLoc.longitude)
+def printing_lat_lom():
+    # printing latitude and longitude
+    print("Latitude = ", getLoc.latitude,)
+    print("Longitude = ", getLoc.longitude)
+
+
